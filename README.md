@@ -2,6 +2,66 @@
 
     npm eject
 
+# 2、安装路由
+
+    npm install react-router-dom --save-dev
+
+# 3、样式处理,该版本内置了 sass
+
+    样式重置
+
+      在public/reset.css
+
+      <link rel="stylesheet" href="%PUBLIC_URL%/reset.css">
+
+# 4、安装 antd
+
+    npm install antd --save
+
+    在入口文件index.js中引入
+
+      import 'antd/dist/antd.min.css';
+
+      注意：官网是引入import 'antd/dist/antd.css'会报错
+
+    按需加载配置
+
+      npm install babel-plugin-import --save-dev
+
+      在webpack.config.js中搜索‘babel-loader’并找到‘
+              test: /\.(js|mjs|jsx|ts|tsx)$/,
+              include: paths.appSrc,
+              loader: require.resolve('babel-loader')’这个位置
+              在该位置的plugin改为以下：
+
+              plugins: [
+                  [isEnvDevelopment &&
+                    shouldUseReactRefresh &&
+                    require.resolve('react-refresh/babel')],
+                    ['import',{libraryName:'antd',style:'css'}]
+                ].filter(Boolean),
+
+# 5、跨域配置
+
+    安装： npm i http-proxy-middleware axios
+
+    配置: 在src/setupPrxoy.js中写入跨域配置
+
+      写入：
+
+        const { createProxyMiddleware } = require('http-proxy-middleware');
+
+        module.exports = function(app){
+          app.use(createProxyMiddleware('/api',{
+            target:'http://localhost:3090',
+            changeOrigin: true,
+            pathRewrite:{
+              '^/api':''
+            }
+          }))
+
+        }
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
