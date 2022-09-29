@@ -1,31 +1,35 @@
 import { Button, Form, Input } from "antd"
-import React, { useState } from "react"
+import React from "react"
+import PropTypes from 'prop-types';
 import { LockOutlined, UserOutlined } from "@ant-design/icons"
 import logo from '../../../imgs/logo192.png'
+import { ACOUNT_PATTERN,PASSWORD_PATTERN } from "../../../config/common"
 
 const LoginForm = (props) => {
 
   // 1、配置参数
   const {title,lable,showEye,comStyle,useDefaultRules} = props.config
+  const { collectValue } = props
   console.log("useDefaultRules: ", useDefaultRules)
 
   const onFinish = (values) => {
-    console.log("Received values of form: ", values)
+    // console.log("Received values of form: ", props)
+    collectValue(values)
   }
-  const valuesChange = (a, b) => {
-    console.log("Received values of form: ", a, b)
-  }
+  // const valuesChange = (a, b) => {
+  //   console.log("Received values of form: ", a, b)
+  // }
 
   // 2、表单默认校验配置
-  const userNamePattern = {pattern:/^[a-zA-Z0-9_-]{4,16}$/,message:'账号必须由数字字母下划线组成的4-16位'}
-  const passWordPattern = {pattern:/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/,message:'密码由数字字母下划线6-16位组成'}
+  const userNamePattern = {pattern:ACOUNT_PATTERN,message:'账号必须由数字字母下划线组成的4-16位'}
+  const passWordPattern = {pattern:PASSWORD_PATTERN,message:'密码由数字字母下划线6-16位组成'}
   const defaultRulesUserName = [{required:true,message:'请输入账号'},{...userNamePattern}]
   const defaultRulesPassWord = [{required:true,message:'请输入密码'},{...passWordPattern}]
 
   return (
     <div className="login_form_box">
       <div className="login_logo">
-        {comStyle.logoUrl?<img src={comStyle.logoUrl} width='100%' height='100%'></img>:<img src={logo} width='100%' height='100%'></img>}
+        {comStyle.logoUrl?<img src={comStyle.logoUrl} width='100%' height='100%' alt="logo"></img>:<img src={logo} width='100%' height='100%' alt="logo"></img>}
       </div>
       <div className="login_title">{title}</div>
       <div className="login_form_item_box">
@@ -34,7 +38,7 @@ const LoginForm = (props) => {
           name="normal_login"
           className="login-form"
           onFinish={onFinish}
-          onValuesChange={valuesChange}
+          // onValuesChange={valuesChange}
         >
           <Form.Item
             name="username"
@@ -72,6 +76,10 @@ const LoginForm = (props) => {
       </div>
     </div>
   )
+}
+
+LoginForm.prototype = {
+  collectValue: PropTypes.func
 }
 
 export default LoginForm
