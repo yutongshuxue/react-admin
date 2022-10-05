@@ -1,0 +1,23 @@
+.home_sider_header{
+  width: 100%;
+  height: 50px;
+  padding: 0px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-color: #fff;
+  .home_sider_header_logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .home_sider_header_title{
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.home_sider_menu{
+  width: 100%;
+}

@@ -16,7 +16,7 @@ export const getStorage = key => {
   if(getData){
     const { data, expTime } = JSON.parse(getData)
     const nowTime = new Date().getTime()
-    if(nowTime - expTime>0){
+    if(expTime - nowTime >0){
       return data
     }
     console.log('该数据以过了有效期')

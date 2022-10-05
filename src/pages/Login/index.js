@@ -1,16 +1,13 @@
 
-import React,{ Component } from "react";
+import React,{ Component} from "react";
 import LoginForm from './components/LoginForm'
 import loginConfig from '../../config/pages/loginConfig'
-
+import { getStorage } from "../../utils/getStorage";
 
 import './index.scss'
 
 class Login extends Component{
-  // getToken = async () => {
-  //   const res = await login()
-  //   console.log(res)
-  // }
+
   collectValue = (value) => {
     // 父组件收集子组件数据
     // console.log(value,this.props,'from child')
@@ -21,6 +18,14 @@ class Login extends Component{
   toHome = () =>{
     console.log(this.props)
     this.props.history.push('/home')
+  }
+
+  componentDidMount(){
+    const token = getStorage('token')
+    // console.log(token,'token')
+    if(token){
+      this.props.history.push('/index')
+    }
   }
 
   render(){

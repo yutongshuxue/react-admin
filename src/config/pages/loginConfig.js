@@ -23,6 +23,9 @@ export default {
       if(res.status === 200){
         const { token } = res.data
         setStorage('token',token,7*24*3600*1000)
+        
+        // 存储token后跳转到home页面
+        app.props.history.push('/index')
       }
     }
   }
