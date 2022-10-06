@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -6,8 +6,8 @@ import {
 import { Layout,Button } from 'antd';
 import { clearStorage } from '../../utils/getStorage';
 import HomeSider from './components/HomeSider';
-import ProviderPage from '../providerPage';
-import { routers } from '../../router';
+import HomeContent from './components/HomeContent'
+import routers from '../../router/creatRoutes'
 import './index.scss'
 const { Header, Sider, Content } = Layout;
 
@@ -32,6 +32,13 @@ const Home = (props) =>{
       props.history.push('/')
     }
 
+    // 自动工程化
+    useEffect(() => {
+      // 请求后台数据
+      
+
+    },[])
+
     return (
       <Layout>
         <Sider width={width}>
@@ -55,16 +62,7 @@ const Home = (props) =>{
             </div>
           </Header>
           <Content className='home_content_box'>
-            
-            {
-              routers.map(item => {
-                return (
-                  <Fragment key={item.path}>
-                    <ProviderPage path={item.path} component={item.component}/>
-                  </Fragment>
-                )        
-              })
-            }
+            <HomeContent routers={routers}></HomeContent>
           </Content>
         </Layout>
       </Layout>

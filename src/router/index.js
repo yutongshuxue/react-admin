@@ -6,7 +6,7 @@ import Data from '../pages/Data';
 
 export const menus = [
   {
-    key:'/index/data',
+    key:'/index/data/index',
     label:'数据中心',
     icon:<AppstoreOutlined/>
   },
@@ -16,27 +16,14 @@ export const menus = [
     icon:<ContainerOutlined/>,
     children:[
       {
-        key:'/index/user/list',
+        key:'/index/user/list/index',
         label:'用户列表',
-        children:[
-          {
-            key:'/index/user/list/detail',
-            label:'用户详情'
-          }
-        ]
       },
       {
-        key:'/index/user/power',
+        key:'/index/user/power/index',
         label:'权限分配',
       },
       
     ]
-  }
-]
-
-export const routers = [
-  {
-    path:'/index/data',
-    component:Data
   }
 ]

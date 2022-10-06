@@ -17,7 +17,7 @@ const HomeSider = ({collapsed,history}) => {
   useEffect(() => {
     const token = getStorage('token')
     if(token){
-      history.push('/index/data')
+      history.push('/index/data/index')
     }
   },[])
 
@@ -32,7 +32,7 @@ const HomeSider = ({collapsed,history}) => {
       <div className="home_sider_menu">
 
         <Menu
-          defaultSelectedKeys={['/index/data']}
+          defaultSelectedKeys={['/index/data/index']}
           defaultOpenKeys={[]}
           mode="inline"
           theme="dark"
