@@ -32,7 +32,7 @@ const HomeSider = ({collapsed,history}) => {
       <div className="home_sider_menu">
 
         <Menu
-          defaultSelectedKeys={['/index/data/index']}
+          defaultSelectedKeys={[menus[0].key]}
           defaultOpenKeys={[]}
           mode="inline"
           theme="dark"

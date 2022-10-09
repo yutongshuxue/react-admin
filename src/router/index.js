@@ -25,5 +25,21 @@ export const menus = [
       },
       
     ]
+  },
+  {
+    key:'/index/book',
+    label:'图书管理',
+    icon:<ContainerOutlined/>,
+    children:[
+      {
+        key:'/index/book/index',
+        label:'图书列表',
+      },
+      {
+        key:'/index/book/detail/index',
+        label:'图书详情',
+      },
+      
+    ]
   }
 ]
